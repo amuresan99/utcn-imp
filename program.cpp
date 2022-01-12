@@ -10,6 +10,9 @@ std::ostream &operator<<(std::ostream &os, Opcode op)
   switch (op) {
     case Opcode::PUSH_FUNC:  return os << "PUSH_FUNC";
     case Opcode::PUSH_PROTO: return os << "PUSH_PROTO";
+
+    // lab 1 ex 4 a 
+    case Opcode::PUSH_INT: return os << "PUSH INC";
     case Opcode::PEEK:       return os << "PEEK";
     case Opcode::POP:        return os << "POP";
     case Opcode::CALL:       return os << "CALL";

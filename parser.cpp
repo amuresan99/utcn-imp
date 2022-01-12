@@ -143,6 +143,16 @@ std::shared_ptr<Expr> Parser::ParseTermExpr()
       return std::static_pointer_cast<Expr>(
           std::make_shared<RefExpr>(ident)
       );
+    };
+
+    // lab 1 ex 3 b
+
+    case Token:: Kind:: INT: {
+      uint64_t integer = tk.GetInt();
+      lexer_.Next();
+      return std::static_pointer_cast<Expr>(
+        std::make_shared<INTExpr>(integer)
+      );
     }
     default: {
       std::ostringstream os;

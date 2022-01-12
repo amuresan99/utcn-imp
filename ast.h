@@ -45,6 +45,9 @@ public:
     REF,
     BINARY,
     CALL,
+
+    // lab 2 ex 3 a
+    INT
   };
 
 public:
@@ -60,6 +63,22 @@ private:
 /**
  * Expression referring to a named value.
  */
+
+ // 
+
+ class INTExpr : public Expr {
+   public:
+   INTExpr(const std::uint64_t val)
+   :Expr(Kind::INT)
+   , integer_(val)
+   {
+   };
+     const std::uint64_t &GetInt() const { return integer_; } 
+
+  private: 
+    std::uint64_t integer_;
+ };
+
 class RefExpr : public Expr {
 public:
   RefExpr(const std::string &name)

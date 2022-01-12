@@ -119,6 +119,10 @@ private:
   /// Lowers a standalone expression statement.
   void LowerExprStmt(const Scope &scope, const ExprStmt &exprStmt);
 
+  // lab 1 ex 5 
+
+  void LowerIntExpr(const Scope &scope, const INTExpr &expr);
+
   /// Lowers a single expression.
   void LowerExpr(const Scope &scope, const Expr &expr);
   /// Lowers a reference to an identifier.
@@ -134,6 +138,8 @@ private:
 private:
   /// Create a new label.
   Label MakeLabel();
+
+
 
   /// Emit a pop instruction.
   void EmitPop();

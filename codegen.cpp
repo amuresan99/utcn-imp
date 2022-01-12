@@ -177,6 +177,11 @@ void Codegen::LowerExpr(const Scope &scope, const Expr &expr)
     case Expr::Kind::CALL: {
       return LowerCallExpr(scope, static_cast<const CallExpr &>(expr));
     }
+
+    // lab 1 ex 5
+    case Expr::Kind::INT: {
+      return LowerIntExpr(scope, static_cast<const INTExpr &>(expr));
+    }
   }
 }
 
@@ -355,3 +360,16 @@ void Codegen::EmitJump(Label label)
   Emit<Opcode>(Opcode::JUMP);
   EmitFixup(label);
 }
+
+// lab 1 ex 5 
+
+void Codegen::LowerIntExpr(const Scope &scope, const INTExpr &expr){
+    depth_ +=1;
+    Emit<Opcode>(Opcode::PUSH_INT);
+    Emit<int64_t>(expr.GetInt());
+}
+
+// void Codegen::EmitPushInt(uint64_t value){
+//     depth_ +=1;
+//     Emit<Opcode>(Opcode::PUSH_INT);
+//     Emit<uint64_t>(value);
